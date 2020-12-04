@@ -1,0 +1,20 @@
+Package: utilitybelt
+Title: Collection of Utility Functions
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Sam",
+           family = "El-Kamand",
+           role = c("aut", "cre"),
+           email = "selkamand@ccia.org.au")
+Description: This package is an assortment of general-use utility functions that make life easier, particularly when working on commandline scripts. It includes functions for loading libraries silently UNLESS an error is thrown, to getting the name of a function from within that function, colorising text output, and more.
+License: `use_mit_license()`
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: testthat
+Imports: assertthat, magrittr
+NeedsCompilation: no
+Packaged: 2020-12-03 21:08:40 UTC; selkamand
+Author: Sam El-Kamand [aut, cre]
+Maintainer: Sam El-Kamand <selkamand@ccia.org.au>

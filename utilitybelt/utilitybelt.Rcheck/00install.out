@@ -1,0 +1,10 @@
+* installing *source* package ‘utilitybelt’ ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+Error in script %>% readLines() %>% grepl(pattern = "here::i_am", x = .) %>%  : 
+  could not find function "%>%"
+Error: unable to load R code in package ‘utilitybelt’
+Execution halted
+ERROR: lazy loading failed for package ‘utilitybelt’
+* removing ‘/Users/selkamand/projects/r_packages/utilitybelt/utilitybelt/utilitybelt.Rcheck/utilitybelt’

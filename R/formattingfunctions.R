@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples 
-#' message(fmtwarning("This is a warning"))
+#' message(fmterror("This is a warning"))
 fmterror <- function(...) { return(crayon::bold(crayon::red(paste0(...))))  }
 fmtwarning <- function(...) { return(crayon::bold(crayon::yellow(paste0(...))))  }
 fmtsuccess <- function(...) { return(crayon::bold(crayon::green(paste0(...))))  }

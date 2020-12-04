@@ -18,3 +18,11 @@ This function searches <project_dir> recursively for R scripts and checks if the
 If not, a warning is output, recommending you add it line.
 If all scripts declare their location relative to project root as above, \strong{getpathProjectRootDirectory()} is less likely to make a mistake.
 }
+\examples{
+checkScriptsDeclareTheirLocation(
+  system.file(
+    "filesfortesting/here_positive_control", 
+    package="utilitybelt"
+  )
+)
+}

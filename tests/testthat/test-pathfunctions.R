@@ -1,20 +1,16 @@
 test_that("positiveControl_checkScriptsDeclareTheirLocation", {
-  testthat::expect_true(checkScriptsDeclareTheirLocation("filesfortesting/here_positive_control"))
-  testthat::expect_true(checkScriptsDeclareTheirLocation("filesfortesting/here_positive_control/"))
+  testthat::expect_true(checkScriptsDeclareTheirLocation(system.file("filesfortesting/here_positive_control", package = "utilitybelt")))
+  testthat::expect_true(checkScriptsDeclareTheirLocation(system.file("filesfortesting/here_positive_control/", package = "utilitybelt")))
 })
 
 test_that("negativeControl_checkScriptsDeclareTheirLocation", {
-  testthat::expect_false(checkScriptsDeclareTheirLocation("filesfortesting/here_negative_control"))
-  testthat::expect_false(checkScriptsDeclareTheirLocation("filesfortesting/here_negative_control/"))
+  testthat::expect_false(checkScriptsDeclareTheirLocation(system.file("filesfortesting/here_negative_control", package = "utilitybelt")))
+  testthat::expect_false(checkScriptsDeclareTheirLocation(system.file("filesfortesting/here_negative_control/", package = "utilitybelt")))
 })
 
 test_that("negativeControl_nestedDirectories_checkScriptsDeclareTheirLocation", {
-  testthat::expect_false(checkScriptsDeclareTheirLocation("filesfortesting/here_negative_control_nested"))
-  testthat::expect_false(checkScriptsDeclareTheirLocation("filesfortesting/here_negative_control_nested/"))
-})
-
-test_that("getpathProjectRootDirectory returns package home", {
- testthat::expect_identical(getpathProjectRootDirectory(), tools::file_path_as_absolute("../../"))
+  testthat::expect_false(checkScriptsDeclareTheirLocation(system.file("filesfortesting/here_negative_control_nested", package = "utilitybelt")))
+  testthat::expect_false(checkScriptsDeclareTheirLocation(system.file("filesfortesting/here_negative_control_nested/", package = "utilitybelt")))
 })
 
 test_that("path_processing works",{

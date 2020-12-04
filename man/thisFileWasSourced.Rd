@@ -12,3 +12,6 @@ TRUE if script from which file was called was sourced, FALSE if run interactivel
 \description{
 Was this file sourced or run interactively?
 }
+\examples{
+thisFileWasSourced()
+}

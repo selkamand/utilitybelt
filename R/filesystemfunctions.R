@@ -5,16 +5,14 @@
 #' @param dir_path path of new directory (string)
 #' @param force_overwrite overwrite directory if it already exists (logical)
 #' @param promt_if_directory_exists a message printed to stderr if directory already exists and force_overwrite = FALSE (string).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing directory".
-#' 
+#' @param verbose Print more info when running (logical)
 #' @return path to successfully created directory (string). If directory cannot be created, the function will throw an error.
 #' @export
-#'
-#' @examples 
-#' dir_create(dir_path="hi/hello/newdir", force_overwrite=FALSE, promt_if_directory_exists="Use the -f flag to overwrite the existing directory"
 dir_create <- function(dir_path, force_overwrite=FALSE, promt_if_directory_exists = NULL, verbose = TRUE) {
   assertthat::assert_that(is.logical(force_overwrite), msg = "force_overwrite argument MUST be logical")
   assertthat::assert_that(!file.exists(dir_path) | isTRUE(force_overwrite), msg = paste0("The directory: ", dir_path ," already exists. ", promt_if_directory_exists))
   assertthat::assert_that(assertthat::is.string(promt_if_directory_exists) | is.null(promt_if_directory_exists), msg = "promt_if_directory_exists must be a string or NULL")
+  assertthat::assert_that(is.logical(verbose), msg = "force_overwrite argument MUST be logical")
   
   if(file.exists(dir_path)){
     if(verbose) message("Overwriting folder: ", dir_path)

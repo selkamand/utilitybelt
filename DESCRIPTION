@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "selkamand@ccia.org.au")
 Description: This package is an assortment of general-use utility functions that make life easier, particularly when working on commandline scripts. It includes functions for loading libraries silently UNLESS an error is thrown, to getting the name of a function from within that function, colorising text output, and more.
-License: `use_mit_license()`
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -18,4 +18,8 @@ Imports:
     assertthat,
     magrittr,
     tools (>= 4.0.3),
-    ggplot2
+    ggplot2,
+    crayon,
+    funr,
+    here,
+    ggpubr

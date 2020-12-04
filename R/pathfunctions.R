@@ -7,7 +7,6 @@
 #' @return path to the directory containing the script from which the function is called. If run interactively, will throw an error (string)
 #' @export
 #'
-#' @examples
 getpathSourceDirectory <- function(warn=FALSE){
   if(warn)
     message("BE WARY... this function returns the script name ONLY if the script is being sourced. If not, then it will return NULL")
@@ -27,6 +26,7 @@ getpathSourceDirectory <- function(warn=FALSE){
 #' @export
 #'
 #' @examples
+#' thisFileWasSourced()
 thisFileWasSourced <- function(){
   if(is.null(funr::get_script_path())) 
     return(FALSE)
@@ -42,15 +42,17 @@ thisFileWasSourced <- function(){
 #'
 #' @param warn Warn user to run checkScriptsDeclareTheirLocation(<project_directory>) to ensure its set up to accurately identify a projects 'home'  (logical)
 #'
-#' @return 
+#' @return absolute path of the project directory rootfolder
 #' @export
 #'
 #' @examples
+#' getpathProjectRootDirectory(warn=FALSE)
 getpathProjectRootDirectory <- function(warn=TRUE){
   if(warn){
-   message("I would reccomend running: 'checkScriptsDeclareTheirLocation(<project_directory>)' in an interactive session to check if scripts are set up such that here::here() can reliably identified the project root") 
+   message("I would reccomend adding (here::i_am(<filepathrelativetoprojectroot>) to the top of your file)")
   }
-  here::here()
+  return(here::here())
+    
 }
 
 
@@ -70,13 +72,19 @@ getpathProjectRootDirectory <- function(warn=TRUE){
 #' @export
 #'
 #' @examples
+#' checkScriptsDeclareTheirLocation(
+#'   system.file(
+#'     "filesfortesting/here_positive_control", 
+#'     package="utilitybelt"
+#'   )
+#' )
 checkScriptsDeclareTheirLocation <- function(project_home_path){
   assertthat::assert_that(assertthat::is.string(project_home_path), msg = fmterror("project_home_path should be a string, not a ", class(project_home_path)))
   assertthat::assert_that(file.exists(project_home_path), msg = fmterror("Cannot find project directory: ", project_home_path))
   full_file_list.v <- dir(project_home_path, full.names = TRUE, recursive = TRUE)
   rscripts <- full_file_list.v[grep(pattern = "\\.R$",full_file_list.v)]
   #print(rscripts)
-  scripts_is_here_present <- sapply(rscripts, function(script) script %>% readLines() %>% grepl(pattern = "here::i_am\\(", x = .) %>% any())
+  scripts_is_here_present <- sapply(rscripts, function(script) script %>% readLines() %>% grepl(pattern = "here::i_am\\(") %>% any())
   scripts_all_have_here <- all(scripts_is_here_present)
   
   if(!scripts_all_have_here) {
@@ -102,6 +110,7 @@ checkScriptsDeclareTheirLocation <- function(project_home_path){
 #' @export
 #'
 #' @examples
+#' path_process("Dir1/Dir2/Dir3/file.tsv", extract_basename=TRUE, remove_extension=TRUE)
 path_process <- function(path, extract_basename, remove_extension, verbose=FALSE) {
   assertthat::assert_that(assertthat::is.string(path))
   assertthat::assert_that(is.logical(extract_basename))

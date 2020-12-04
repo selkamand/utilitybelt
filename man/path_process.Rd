@@ -21,3 +21,6 @@ processed path (string)
 \description{
 Process filenames/paths
 }
+\examples{
+path_process("Dir1/Dir2/Dir3/file.tsv", extract_basename=TRUE, remove_extension=TRUE)
+}

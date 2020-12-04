@@ -18,6 +18,8 @@ dir_create(
 \item{force_overwrite}{overwrite directory if it already exists (logical)}
 
 \item{promt_if_directory_exists}{a message printed to stderr if directory already exists and force_overwrite = FALSE (string).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing directory".}
+
+\item{verbose}{Print more info when running (logical)}
 }
 \value{
 path to successfully created directory (string). If directory cannot be created, the function will throw an error.
@@ -25,7 +27,4 @@ path to successfully created directory (string). If directory cannot be created,
 \description{
 Create directory
 Take a path and create a new directory, with informative messages if it already exists.
-}
-\examples{
-dir_create(dir_path="hi/hello/newdir", force_overwrite=FALSE, promt_if_directory_exists="Use the -f flag to overwrite the existing directory"
 }

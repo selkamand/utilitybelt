@@ -21,5 +21,5 @@ fmterror, fmtwarning, fmtsuccess, fmtbold.
 If greater control is required, use the crayon package
 }
 \examples{
-message(fmtwarning("This is a warning"))
+message(fmterror("This is a warning"))
 }

@@ -10,8 +10,11 @@ getpathProjectRootDirectory(warn = TRUE)
 \item{warn}{Warn user to run checkScriptsDeclareTheirLocation(<project_directory>) to ensure its set up to accurately identify a projects 'home'  (logical)}
 }
 \value{
-
+absolute path of the project directory rootfolder
 }
 \description{
 getpathProjectRootDirectory
+}
+\examples{
+getpathProjectRootDirectory(warn=FALSE)
 }

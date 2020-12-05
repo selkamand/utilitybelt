@@ -49,7 +49,7 @@ thisFileWasSourced <- function(){
 #' getpathProjectRootDirectory(warn=FALSE)
 getpathProjectRootDirectory <- function(warn=TRUE){
   if(warn){
-   message("I would reccomend adding (here::i_am(<filepathrelativetoprojectroot>) to the top of your file)")
+   message("I would reccomend adding (here::i_am(<filepathrelativetoprojectroot>) to the top of your file, if you haven't already)")
   }
   return(here::here())
     
@@ -89,7 +89,7 @@ checkScriptsDeclareTheirLocation <- function(project_home_path){
   
   if(!scripts_all_have_here) {
     scripts_without_here <- names(scripts_is_here_present)[scripts_is_here_present==FALSE]
-    message("'here::i_am(<project_relative_path>)' needs to be added to the following scripts if here() is to reliably identify the project home directory: \n", paste0(scripts_without_here, collapse = "\n"), "")
+    message("'here::i_am(<project_relative_path>)' is absent from the following scripts: \n", paste0(scripts_without_here, collapse = "\n"), "")
   }
   return(scripts_all_have_here)
 }

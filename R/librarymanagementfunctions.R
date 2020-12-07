@@ -1,4 +1,4 @@
-#' Loads a library quietly
+#' @title Loads a library quietly
 #' This function loads a package, optionally outputting a single line message if successful.
 #' Will always print the full error message if load fails
 #' @param library_name (string) Name of library to load

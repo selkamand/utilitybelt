@@ -1,4 +1,5 @@
-#' Test Assertion with Invisible Return
+#' @title Test Assertion with Invisible Return
+#' @description 
 #' Wraps around asserthat::assert_that() but makes return value invisible (can be assigned but will not print when not assigned)
 #' @param ... see ?assertthat::assert_that
 #' @param env see ?assertthat::assert_that

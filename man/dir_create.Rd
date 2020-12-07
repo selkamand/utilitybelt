@@ -2,8 +2,7 @@
 % Please edit documentation in R/filesystemfunctions.R
 \name{dir_create}
 \alias{dir_create}
-\title{Create directory
-Take a path and create a new directory, with informative messages if it already exists.}
+\title{Create directory}
 \usage{
 dir_create(
   dir_path,
@@ -25,6 +24,5 @@ dir_create(
 path to successfully created directory (string). If directory cannot be created, the function will throw an error.
 }
 \description{
-Create directory
 Take a path and create a new directory, with informative messages if it already exists.
 }

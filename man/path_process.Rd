@@ -19,7 +19,7 @@ path_process(path, extract_basename, remove_extension, verbose = FALSE)
 processed path (string)
 }
 \description{
-Process filenames/paths
+Takes a filename and removes extensions (file.vep.tsv to file.vep and file.vep.vcf.gz to file.vep AND/OR  extracts basename (i.e. dir1/dir2/file.tsv to file)
 }
 \examples{
 path_process("Dir1/Dir2/Dir3/file.tsv", extract_basename=TRUE, remove_extension=TRUE)

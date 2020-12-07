@@ -21,7 +21,7 @@ If all scripts declare their location relative to project root as above, \strong
 \examples{
 checkScriptsDeclareTheirLocation(
   system.file(
-    "filesfortesting/here_positive_control", 
+    "filesfortesting/here_positive_control",
     package="utilitybelt"
   )
 )

@@ -2,8 +2,7 @@
 % Please edit documentation in R/testingfunctions.R
 \name{assert_that}
 \alias{assert_that}
-\title{Test Assertion with Invisible Return
-Wraps around asserthat::assert_that() but makes return value invisible (can be assigned but will not print when not assigned)}
+\title{Test Assertion with Invisible Return}
 \usage{
 assert_that(..., env = parent.frame(), msg = NULL)
 }
@@ -18,6 +17,5 @@ assert_that(..., env = parent.frame(), msg = NULL)
 (invisible) TRUE if expression is TRUE. Will error if is FALSE
 }
 \description{
-Test Assertion with Invisible Return
 Wraps around asserthat::assert_that() but makes return value invisible (can be assigned but will not print when not assigned)
 }

@@ -2,8 +2,7 @@
 % Please edit documentation in R/optparseextensions.R
 \name{print_help_stderr}
 \alias{print_help_stderr}
-\title{Print Help to Stderr
-Wraps around optparse's print_help function but sends help info to stderr}
+\title{Print Help to Stderr}
 \usage{
 print_help_stderr()
 }
@@ -11,6 +10,5 @@ print_help_stderr()
 invisible (NULL)
 }
 \description{
-Print Help to Stderr
 Wraps around optparse's print_help function but sends help info to stderr
 }

@@ -3,6 +3,7 @@
 export("%>%")
 export(assert_that)
 export(checkScriptsDeclareTheirLocation)
+export(class_is)
 export(dir_create)
 export(fmtbold)
 export(fmterror)

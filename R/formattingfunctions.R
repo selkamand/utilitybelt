@@ -30,7 +30,6 @@ fmterror <- function(...) { return(crayon::bold(crayon::red(paste0(...))))  }
 #' @return (string) Input text flanked by relevant Ansi escape codes
 #' @export
 #'
-#' @examples
 fmtwarning <- function(...) { return(crayon::bold(crayon::yellow(paste0(...))))  }
 
 #' @title Colour text
@@ -46,7 +45,6 @@ fmtwarning <- function(...) { return(crayon::bold(crayon::yellow(paste0(...)))) 
 #' @return (string) Input text flanked by relevant Ansi escape codes
 #' @export
 #'
-#' @examples
 fmtsuccess <- function(...) { return(crayon::bold(crayon::green(paste0(...))))  }
 
 #' @title Colour text
@@ -62,5 +60,4 @@ fmtsuccess <- function(...) { return(crayon::bold(crayon::green(paste0(...))))  
 #' @return (string) Input text flanked by relevant Ansi escape codes
 #' @export
 #'
-#' @examples
 fmtbold <- function(...) { return(crayon::bold(paste0(...)))  }

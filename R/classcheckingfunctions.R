@@ -1,3 +1,5 @@
+utils::globalVariables("class_is")
+
 #' class_is
 #'
 #' Check if object has a particular class

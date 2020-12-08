@@ -14,4 +14,6 @@ class_is <- function(object, tested_class){
 }
 
 #Partial application of function to create variations. Trying to find a way to do this compatible with roxygen
+
+#Check if stderr() / stdout() or some other connection to the terminal
 class_is_terminal_connection <- curry::partial(fun = class_is, args = list(tested_class = c("terminal", "connection")))

@@ -47,10 +47,13 @@ files_exist_all <- function(files){
 #' Check which files exist
 #'
 #' @param files a vector of filenames/filepaths. Directories and Files are treated the exact same ways (character).
-#'
 #' @return vector indicating which files/directories in \strong{files} exist: TRUE/FALSE (logical)
 #' @export
 #'
 files_exist_which <- function(files){
-  purrr::map_lgl(.x = files, .f = file.exists)
+  assert_that(is.character(files), msg="files MUST be a character vector")
+  exists_lgl <- purrr::map_lgl(.x = files, .f = file.exists)
+  names(exists_lgl) <- files
+  
+  return(exists_lgl)
 }

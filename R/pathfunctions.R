@@ -125,3 +125,23 @@ path_process <- function(path, extract_basename, remove_extension, verbose=FALSE
 
   return(processed_path)
 }
+
+
+#' Process filenames/paths
+#'
+#' @description Takes a filename and removes extensions (file.vep.tsv to file.vep and file.vep.vcf.gz to file.vep AND/OR  extracts basename (i.e. dir1/dir2/file.tsv to file)
+#' @param paths a vector of filenames/filepaths (character)
+#' @param extract_basename extract basename (logical)
+#' @param remove_extension remove extension (logical)
+#' @param verbose (logical)
+#' @return vector of processed filenames (character)
+#' @export
+#'
+#' @examples
+#' path_process_vectorized(
+#' paths = c("Dir1/Dir2/Dir3/file.tsv", "/root/dir/myfile"), 
+#' extract_basename = TRUE, 
+#' remove_extension = TRUE)
+path_process_vectorized <- function(paths, extract_basename, remove_extension, verbose=FALSE){
+  purrr::map_chr(.x = paths, .f = function(x) path_process(path=x, extract_basename=extract_basename, remove_extension=remove_extension, verbose=FALSE))
+}

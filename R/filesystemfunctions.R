@@ -23,3 +23,34 @@ dir_create <- function(dir_path, force_overwrite=FALSE, promt_if_directory_exist
   }
   return(dir_path)
 }
+
+
+
+# Do files exist ----------------------------------------------------------
+
+#' Check files ALL exist
+#'
+#' @param files a vector of filenames/filepaths. Directories and Files are treated the exact same ways (character).
+#'
+#' @return do all files/directories in \strong{files} vector exist: TRUE/FALSE (logical)
+#' @export
+#'
+files_exist_all <- function(files){
+  assert_that(is.character(files), msg="files MUST be a character vector")
+  do_all_files_exist <- files %>%
+    files_exist_which() %>%
+    all()
+  return(do_all_files_exist)
+}
+
+
+#' Check which files exist
+#'
+#' @param files a vector of filenames/filepaths. Directories and Files are treated the exact same ways (character).
+#'
+#' @return vector indicating which files/directories in \strong{files} exist: TRUE/FALSE (logical)
+#' @export
+#'
+files_exist_which <- function(files){
+  purrr::map_lgl(.x = files, .f = file.exists)
+}

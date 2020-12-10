@@ -1,11 +1,14 @@
 
 #' Retrieve element from sublist of nested list
 #'
+#' @details 
+#' Will error if list is zero_length
+#'
 #' @param list_of_lists A list containing at least one sublist lists (list)
 #' @param name_of_property The name of the property to retrieve. For example if your sublists have some element named 'petal_length', you could use name_of_property == petal_lengt h (string)
 #' @param function_for_sublist_assertion Some function that takes one argument (teach sublist) and returns TRUE/FALSE. Function is fed into an assertion. By default, no assertion is applied (function). This property is useful if you want to check all sublists are of a certain class.
 #' @family nested_lists
-#' @return (vector)
+#' @return vector of the same length as the input list (vector)
 #' @export
 #'
 list_of_lists_retrieve_second_level_property <- function(list_of_lists, name_of_property, function_for_sublist_assertion=function(x) { return(TRUE) }){
@@ -14,6 +17,7 @@ list_of_lists_retrieve_second_level_property <- function(list_of_lists, name_of_
   assert_that(assertthat::is.string(name_of_property))
   assert_that(is_list_of_lists(list_of_lists))
   assert_that(length(list_of_lists) > 0)
+  
   #Main
   main_result <- purrr::map(.x = list_of_lists, .f = function(second_level_objects) { 
     assert_that(function_for_sublist_assertion(second_level_objects))

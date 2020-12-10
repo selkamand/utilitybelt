@@ -18,10 +18,13 @@ list_of_lists_retrieve_second_level_property(
 \item{function_for_sublist_assertion}{Some function that takes one argument (teach sublist) and returns TRUE/FALSE. Function is fed into an assertion. By default, no assertion is applied (function). This property is useful if you want to check all sublists are of a certain class.}
 }
 \value{
-(vector)
+vector of the same length as the input list (vector)
 }
 \description{
 Retrieve element from sublist of nested list
+}
+\details{
+Will error if list is zero_length
 }
 \seealso{
 Other nested_lists: 

@@ -4,13 +4,15 @@
 \alias{assert_non_empty_string}
 \title{Check object is a non-empty string}
 \usage{
-assert_non_empty_string(object)
+assert_non_empty_string(object, msg = "")
 }
 \arguments{
 \item{object}{Some value you want to assert is a non-empty string}
+
+\item{msg}{Some message to print on failure (appended to the hard-coded message). Will automatically get wrapped in fmterror (string)}
 }
 \value{
-invisible(TRUE) if the object is a non-empty string. Throws an error if it is not
+invisible(TRUE) if the object is a non-empty string. Throws an error if it is not.
 }
 \description{
 Check object is a non-empty string

@@ -20,8 +20,11 @@ test_that("assert_non_empty_string works", {
   character = c("Billy", "Bob")
   empty_string=""
   expect_true(assert_non_empty_string(valid_string))
+  expect_true(assert_non_empty_string(valid_string, msg = "Does adding a message anything this up?"))
   expect_true(assert_non_empty_string(valid_string_single_char))
   expect_error(assert_non_empty_string(number), "numeric")
   expect_error(assert_non_empty_string(character), "character")
   expect_error(assert_non_empty_string(empty_string), "empty")
+  expect_error(assert_non_empty_string(empty_string, msg = "THIS IS MY ERROR MESSAGE"), "THIS IS MY ERROR MESSAGE")
+  expect_error(assert_non_empty_string(character, msg = "THIS IS MY ERROR MESSAGE"), "THIS IS MY ERROR MESSAGE")
   })

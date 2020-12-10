@@ -14,8 +14,13 @@ assert_that(..., env = parent.frame(), msg = NULL)
 \item{msg}{see ?assertthat::assert_that}
 }
 \value{
-(invisible) TRUE if expression is TRUE. Will error if is FALSE
+invisible (TRUE) if expression is TRUE. Will error if is FALSE
 }
 \description{
 Wraps around asserthat::assert_that() but makes return value invisible (can be assigned but will not print when not assigned)
 }
+\seealso{
+Other customassertions: 
+\code{\link{assert_non_empty_string}()}
+}
+\concept{customassertions}

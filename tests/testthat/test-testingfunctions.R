@@ -12,3 +12,16 @@ test_that("assert_that wrapper works", {
   expect_true(file.size(logfile.path)==0)
   file.remove(logfile.path)
 })
+
+test_that("assert_non_empty_string works", {
+  valid_string="Billy"
+  valid_string_single_char="A"
+  number = 5
+  character = c("Billy", "Bob")
+  empty_string=""
+  expect_true(assert_non_empty_string(valid_string))
+  expect_true(assert_non_empty_string(valid_string_single_char))
+  expect_error(assert_non_empty_string(number), "numeric")
+  expect_error(assert_non_empty_string(character), "character")
+  expect_error(assert_non_empty_string(empty_string), "empty")
+  })

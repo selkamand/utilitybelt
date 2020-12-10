@@ -25,6 +25,6 @@ assert_that <- function(..., env = parent.frame(), msg = NULL){
 #' @family customassertions
 #' 
 assert_non_empty_string <- function(object, msg=""){
-  assert_that(assertthat::is.string(object), msg = fmterror("object: [", substitute(object), "] must be a string, not a", class(object), ". ", msg))
-  assert_that(nchar(object) > 0, msg = fmterror("object: [", substitute(object), "] is a string but its empty. Need to have more than 0 characters", class(object), ". ", msg))
+  assert_that(assertthat::is.string(object), msg = fmterror("assert_non_empty_string:  The object [", substitute(object), "] must be a string, not a ", class(object), ". ", msg))
+  assert_that(nchar(object) > 0, msg = fmterror("assert_non_empty_string: object [", substitute(object), "] is a string but it is empty (''). ", msg))
 }

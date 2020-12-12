@@ -26,3 +26,8 @@ path to successfully created directory (string). If directory cannot be created,
 \description{
 Take a path and create a new directory, with informative messages if it already exists.
 }
+\seealso{
+Other filesystemfunctions: 
+\code{\link{file_create}()}
+}
+\concept{filesystemfunctions}

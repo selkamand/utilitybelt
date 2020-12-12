@@ -2,16 +2,16 @@
 #' @description Take a path and create a new directory, with informative messages if it already exists.
 #' @param dir_path path of new directory (string)
 #' @param force_overwrite overwrite directory if it already exists (logical)
-#' @param promt_if_directory_exists a message printed to stderr if directory already exists and force_overwrite = FALSE (string).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing directory".
+#' @param prompt_if_directory_exists a message printed to stderr if directory already exists and force_overwrite = FALSE (string).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing directory".
 #' @param verbose Print more info when running (logical)
 #' @return path to successfully created directory (string). If directory cannot be created, the function will throw an error.
 #' @family filesystemfunctions
 #' @export
-dir_create <- function(dir_path, force_overwrite=FALSE, promt_if_directory_exists = NULL, verbose = TRUE) {
+dir_create <- function(dir_path, force_overwrite=FALSE, prompt_if_directory_exists = NULL, verbose = TRUE) {
   assertthat::assert_that(is.logical(force_overwrite), msg = "force_overwrite argument MUST be logical")
-  assertthat::assert_that(!file.exists(dir_path) | isTRUE(force_overwrite), msg = paste0("The directory: ", dir_path ," already exists. ", promt_if_directory_exists))
-  assertthat::assert_that(assertthat::is.string(promt_if_directory_exists) | is.null(promt_if_directory_exists), msg = "promt_if_directory_exists must be a string or NULL")
-  assertthat::assert_that(is.logical(verbose), msg = "force_overwrite argument MUST be logical")
+  assertthat::assert_that(!file.exists(dir_path) | isTRUE(force_overwrite), msg = paste0("The directory: ", dir_path ," already exists. ", prompt_if_directory_exists))
+  assertthat::assert_that(assertthat::is.string(prompt_if_directory_exists) | is.null(prompt_if_directory_exists), msg = "prompt_if_directory_exists must be a string or NULL")
+  assertthat::assert_that(is.logical(verbose), msg = "verbose argument MUST be logical")
 
   if(file.exists(dir_path)){
     if(verbose) message("Overwriting folder: ", dir_path)
@@ -29,16 +29,16 @@ dir_create <- function(dir_path, force_overwrite=FALSE, promt_if_directory_exist
 #' @description Take a path and create a new file, with informative messages if it already exists.
 #' @param file_path path of new file (string)
 #' @param force_overwrite overwrite file if it already exists (logical)
-#' @param promt_if_file_exists a message printed to stderr if file already exists and force_overwrite = FALSE  (in addition to some generic error message).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing file". (string)
+#' @param prompt_if_file_exists a message printed to stderr if file already exists and force_overwrite = FALSE  (in addition to some generic error message).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing file". (string)
 #' @param verbose Print more info when running (logical)
 #' @return path to successfully created file (string). If file cannot be created, the function will throw an error.
 #' @family filesystemfunctions
 #' @export 
-file_create <- function(file_path, force_overwrite=FALSE, promt_if_file_exists = NULL, verbose = TRUE) {
+file_create <- function(file_path, force_overwrite=FALSE, prompt_if_file_exists = NULL, verbose = TRUE) {
   assertthat::assert_that(is.logical(force_overwrite), msg = fmterror("file_create: force_overwrite argument MUST be logical"))
-  assertthat::assert_that(!file.exists(file_path) | isTRUE(force_overwrite), msg = fmterror("file_create: The file: [", file_path ," already exists. ]", promt_if_file_exists))
-  assertthat::assert_that(assertthat::is.string(promt_if_file_exists) | is.null(promt_if_file_exists), msg = "file_create: promt_if_file_exists must be a string or NULL")
-  assertthat::assert_that(is.logical(verbose), msg = fmterror("file_create: force_overwrite argument MUST be logical, not ", class(force_overwrite)))
+  assertthat::assert_that(!file.exists(file_path) | isTRUE(force_overwrite), msg = fmterror("file_create: The file: [", file_path ," already exists. ]", prompt_if_file_exists))
+  assertthat::assert_that(assertthat::is.string(prompt_if_file_exists) | is.null(prompt_if_file_exists), msg = "file_create: prompt_if_file_exists must be a string or NULL")
+  assertthat::assert_that(is.logical(verbose), msg = fmterror("file_create: verbose argument MUST be logical, not ", class(verbose)))
   
   if(file.exists(file_path)){
     if(verbose) message("Overwriting folder: ", file_path)

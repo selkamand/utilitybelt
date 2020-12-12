@@ -7,7 +7,7 @@
 file_create(
   file_path,
   force_overwrite = FALSE,
-  promt_if_file_exists = NULL,
+  prompt_if_file_exists = NULL,
   verbose = TRUE
 )
 }
@@ -16,7 +16,7 @@ file_create(
 
 \item{force_overwrite}{overwrite file if it already exists (logical)}
 
-\item{promt_if_file_exists}{a message printed to stderr if file already exists and force_overwrite = FALSE  (in addition to some generic error message).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing file". (string)}
+\item{prompt_if_file_exists}{a message printed to stderr if file already exists and force_overwrite = FALSE  (in addition to some generic error message).  If writing a commandline script, for example, you might want to print "Use the -f flag to overwrite the existing file". (string)}
 
 \item{verbose}{Print more info when running (logical)}
 }

@@ -28,3 +28,18 @@ test_that("assert_non_empty_string works", {
   expect_error(assert_non_empty_string(empty_string, msg = "THIS IS MY ERROR MESSAGE"), "THIS IS MY ERROR MESSAGE")
   expect_error(assert_non_empty_string(character, msg = "THIS IS MY ERROR MESSAGE"), "THIS IS MY ERROR MESSAGE")
   })
+
+
+test_that("assert_is_whole_number works", {
+  expect_true(assert_is_whole_number(1))
+  expect_true(assert_is_whole_number(10))
+  expect_true(assert_is_whole_number(100.000))
+  expect_true(assert_is_whole_number(-10))
+  expect_true(assert_is_whole_number(-10.0))
+  expect_error(assert_is_whole_number("STRING"))
+  expect_error(assert_is_whole_number(1.2))
+  expect_error(assert_is_whole_number(10000.5))
+  expect_error(assert_is_whole_number(c(1, 2)))
+  expect_error(assert_is_whole_number(list(1, 2)))
+  expect_error(assert_is_whole_number("string", msg = "THIS IS MY ERROR MESSAGE"), "THIS IS MY ERROR MESSAGE")
+})

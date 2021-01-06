@@ -21,6 +21,7 @@ Wraps around asserthat::assert_that() but makes return value invisible (can be a
 }
 \seealso{
 Other customassertions: 
+\code{\link{assert_is_whole_number}()},
 \code{\link{assert_non_empty_string}()}
 }
 \concept{customassertions}

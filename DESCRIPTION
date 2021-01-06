@@ -24,4 +24,5 @@ Imports:
     here,
     ggpubr,
     optparse,
-    purrr
+    purrr,
+    assertive (>= 0.3.6)

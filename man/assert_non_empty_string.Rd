@@ -24,6 +24,7 @@ assert_non_empty_string(possiblestring)
 }
 \seealso{
 Other customassertions: 
+\code{\link{assert_is_whole_number}()},
 \code{\link{assert_that}()}
 }
 \concept{customassertions}

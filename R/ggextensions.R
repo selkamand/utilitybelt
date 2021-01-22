@@ -39,7 +39,6 @@ theme_no_legend <- function(){
 #'
 #' @return ggtheme
 #' @export
-#'
 theme_no_legend_title <- function(){
   ggplot2::theme(legend.title = element_blank())
 }

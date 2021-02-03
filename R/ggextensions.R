@@ -101,8 +101,8 @@ geom_crossbar_predefined <- function(summaryfunction=median, width=0.4, size=0.3
 #' mtcars %>%
 #' ggplot2::ggplot(ggplot2::aes(x=as.character(cyl))) +
 #' ggplot2::geom_bar() +
-#' ggplot2::xlab("cylinders")
-#' geom_barplot_counts() +
+#' ggplot2::xlab("cylinders") + 
+#' geom_barplot_counts() 
 geom_barplot_counts <- function(distance_from_bar=1.5, size = 4, fontface="bold", alpha = 0.8, color = "black", family="Helvetica"){
   ggplot2::geom_text(
     stat='count', ggplot2::aes(label=..count..), 

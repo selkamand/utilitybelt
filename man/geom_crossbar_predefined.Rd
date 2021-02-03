@@ -20,7 +20,7 @@ Options include median, mean, max, min, or any other function that summarises a 
 \item{size, alpha, colour}{ggplot aesthetics}
 }
 \value{
-ggtheme
+ggplot geom
 }
 \description{
 Adds a crossbar to a ggplot.

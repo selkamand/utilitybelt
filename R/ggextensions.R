@@ -49,6 +49,9 @@ theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_yl
   return(custom_theme)
 }
 
+
+
+
 #' Add crossbar to ggplot
 #'
 #' Adds a crossbar to a ggplot. 
@@ -59,7 +62,7 @@ theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_yl
 #' @param width width of crossbar
 #' @param size,alpha,colour ggplot aesthetics
 #'
-#' @return ggtheme
+#' @return ggplot geom
 #' @export
 #'
 #' @examples 
@@ -73,6 +76,44 @@ geom_crossbar_predefined <- function(summaryfunction=median, width=0.4, size=0.3
                geom = "crossbar", width = width, size=size)
 }
 
+# mtcars %>%
+# ggplot2::ggplot(ggplot2::aes(mpg)) + 
+# ggplot2::geom_bar() + 
+# geom_barplot_counts()
+
+#' geom barplot counts
+#' 
+#' Add text labels indicating counts above barplot columns. 
+#' Works on plots that have a geom_bar() layer.
+#' Works even if you flip axis with coord_flip().
+#' 
+#' @inheritParams ggplot2::geom_text
+#' @param distance_from_bar distance between text and cbar 
+#' @param size size of text (number)
+#' @param alpha transparancy (number)
+#' @param color colour (string)
+#' @param family font family (string)
+#'
+#' @return ggplot geom
+#' @export
+#'
+#' @examples
+#' mtcars %>%
+#' ggplot2::ggplot(ggplot2::aes(x=as.character(cyl))) +
+#' ggplot2::geom_bar() +
+#' ggplot2::xlab("cylinders")
+#' geom_barplot_counts() +
+geom_barplot_counts <- function(distance_from_bar=1.5, size = 4, fontface="bold", alpha = 0.8, color = "black", family="Helvetica"){
+  ggplot2::geom_text(
+    stat='count', ggplot2::aes(label=..count..), 
+    nudge_y = distance_from_bar, 
+    size = size, 
+    fontface=fontface, 
+    alpha = alpha, 
+    color=color,
+    family=family
+  )
+}
 
 #' Custom Themes
 #'
@@ -103,5 +144,5 @@ theme_no_legend <- function(){
 #' @return ggtheme
 #' @export
 theme_no_legend_title <- function(){
-  ggplot2::theme(legend.title = element_blank())
+  ggplot2::theme(legend.title = ggplot2::element_blank())
 }

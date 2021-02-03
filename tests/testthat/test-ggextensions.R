@@ -1,7 +1,12 @@
 test_that("ggtheme functions work", {
-  ggtheme_functions = c(theme_axis_titles, theme_axis_titles_cleveland)
-  
-  for (ggtheme_function in ggtheme_functions){
-    expect_s3_class(ggtheme_function(), c("theme", "gg"), exact = TRUE)
-  }
+  expect_s3_class(theme_axis_titles(), c("theme", "gg"), exact = TRUE)
+  expect_s3_class(theme_axis_titles_cleveland(), c("theme", "gg"), exact = TRUE)
+  expect_s3_class(theme_common_adjustments(), c("theme", "gg"), exact = TRUE)
+  expect_s3_class(theme_no_legend_title(), c("theme", "gg"), exact = TRUE)
+  expect_s3_class(theme_no_legend(), c("theme", "gg"), exact = TRUE)
+})
+
+test_that("geom functions work",{
+  expect_s3_class(geom_crossbar_predefined(), c("LayerInstance","Layer","ggproto","gg" ))
+  expect_s3_class(geom_barplot_counts(), c("LayerInstance","Layer","ggproto","gg" ))
 })

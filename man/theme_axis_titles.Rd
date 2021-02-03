@@ -4,7 +4,11 @@
 \alias{theme_axis_titles}
 \title{Custom Themes}
 \usage{
-theme_axis_titles()
+theme_axis_titles(
+  dist_from_plot_xlab = 10,
+  dist_from_plot_ylab = 10,
+  dist_from_plot_ggtitle = 10
+)
 }
 \value{
 ggtheme

@@ -6,11 +6,71 @@
 #'
 #' @return ggtheme
 #' @export
+theme_axis_titles <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, dist_from_plot_ggtitle = 10){
+  .Deprecated(new = "theme_common_adjustments")
+  
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(hjust=0.5, size = 18, face = "bold", margin = ggplot2::margin(b = dist_from_plot_ggtitle)),
+    axis.title = ggplot2::element_text(face="bold"), 
+    axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t=dist_from_plot_xlab)),
+    axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r=dist_from_plot_ylab))
+  )
+}
+
+#' Custom Themes 
+#' 
+#' ggplot theme that fixes a bunch of issues I tend to have with plots
 #'
-theme_axis_titles <- function(){
-  ggplot2::theme(plot.title = ggplot2::element_text(hjust=0.5, size = 18, face = "bold"),
-        axis.title = ggplot2::element_text(face="bold"), 
-        axis.title.y = ggplot2::element_text())
+#' @param dist_from_plot_xlab distance between x axis title and plot (number)
+#' @param dist_from_plot_ylab distance between y axis title and plot (number)
+#' @param dist_from_plot_ggtitle distance between y axis title and plot (number)
+#' @param no_background set all backgrounds to clear? (flag)
+#'
+#' @return ggtheme
+#' @export
+#' @examples 
+#' mtcars %>% 
+#'   ggplot2::ggplot(ggplot2::aes(cyl>6, mpg)) + 
+#'   ggplot2::geom_point() + 
+#'   theme_axis_titles()
+theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, dist_from_plot_ggtitle = 10, no_background=FALSE){
+  custom_theme <- ggplot2::theme(
+    plot.title = ggplot2::element_text(hjust=0.5, size = 18, face = "bold", margin = ggplot2::margin(b = dist_from_plot_ggtitle)),
+    axis.title = ggplot2::element_text(face="bold"), 
+    axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t=dist_from_plot_xlab)),
+    axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r=dist_from_plot_ylab))
+  )
+  
+  
+  if(no_background){
+    custom_theme <- custom_theme + ggplot2::theme(panel.background = ggplot2::element_blank(), plot.background = ggplot2::element_blank())
+  }
+  
+  return(custom_theme)
+}
+
+#' Add crossbar to ggplot
+#'
+#' Adds a crossbar to a ggplot. 
+#' Best used when comparing one categorical and one numeric variable using geom_point / geom_jitter(height=0).
+#'
+#' @param summaryfunction a function run on the y aesthetic to determine where line is drawn. 
+#' Options include median, mean, max, min, or any other function that summarises a numeric vector into a single number (function)
+#' @param width width of crossbar
+#' @param size,alpha,colour ggplot aesthetics
+#'
+#' @return ggtheme
+#' @export
+#'
+#' @examples 
+#' mtcars %>% 
+#'   ggplot2::ggplot(ggplot2::aes(cyl>6, mpg)) + 
+#'   ggplot2::geom_point() + 
+#'   utilitybelt::geom_crossbar_predefined()
+geom_crossbar_predefined <- function(summaryfunction=median, width=0.4, size=0.3, colour){
+  assertthat::assert_that(is.function(summaryfunction), msg = "summaryfunction must be a function (e.g. mean)")
+  ggplot2::stat_summary(fun = summaryfunction, fun.min = summaryfunction, fun.max = summaryfunction,
+               geom = "crossbar", width = width, size=size)
 }
 
 
@@ -25,6 +85,9 @@ theme_axis_titles_cleveland <- function(){
           axis.title = ggplot2::element_text(face="bold"), 
           axis.title.y = ggplot2::element_text())
 }
+
+
+
 
 #' Custom Themes
 #'

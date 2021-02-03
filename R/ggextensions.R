@@ -33,9 +33,10 @@ theme_axis_titles <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, 
 #'   ggplot2::ggplot(ggplot2::aes(cyl>6, mpg)) + 
 #'   ggplot2::geom_point() + 
 #'   theme_axis_titles()
-theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, dist_from_plot_ggtitle = 10, no_background=FALSE){
+theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, dist_from_plot_ggtitle = 10, no_background=FALSE, subtitle_face="plain"){
   custom_theme <- ggplot2::theme(
     plot.title = ggplot2::element_text(hjust=0.5, size = 18, face = "bold", margin = ggplot2::margin(b = dist_from_plot_ggtitle)),
+    plot.subtitle = ggplot2::element_text(hjust = 0.5, face = subtitle_face),
     axis.title = ggplot2::element_text(face="bold"), 
     axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t=dist_from_plot_xlab)),
     axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r=dist_from_plot_ylab))

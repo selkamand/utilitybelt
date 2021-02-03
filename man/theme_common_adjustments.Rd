@@ -8,7 +8,8 @@ theme_common_adjustments(
   dist_from_plot_xlab = 10,
   dist_from_plot_ylab = 10,
   dist_from_plot_ggtitle = 10,
-  no_background = FALSE
+  no_background = FALSE,
+  subtitle_face = "plain"
 )
 }
 \arguments{

@@ -5,7 +5,7 @@
 \title{Add crossbar to ggplot}
 \usage{
 geom_crossbar_predefined(
-  summaryfunction = median,
+  summaryfunction = stats::median,
   width = 0.4,
   size = 0.3,
   colour
@@ -17,7 +17,7 @@ Options include median, mean, max, min, or any other function that summarises a 
 
 \item{width}{width of crossbar}
 
-\item{size, alpha, colour}{ggplot aesthetics}
+\item{size, colour}{ggplot aesthetics}
 }
 \value{
 ggplot geom

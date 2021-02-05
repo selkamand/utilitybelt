@@ -18,6 +18,8 @@ geom_barplot_counts(
 
 \item{size}{size of text (number)}
 
+\item{fontface}{Font face ("plain", "italic", "bold", "bold.italic") (string)}
+
 \item{alpha}{transparancy (number)}
 
 \item{color}{colour (string)}

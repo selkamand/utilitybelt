@@ -10,6 +10,13 @@ theme_axis_titles(
   dist_from_plot_ggtitle = 10
 )
 }
+\arguments{
+\item{dist_from_plot_xlab}{distance between x axis title and plot (number)}
+
+\item{dist_from_plot_ylab}{distance between y axis title and plot (number)}
+
+\item{dist_from_plot_ggtitle}{distance between y axis title and plot (number)}
+}
 \value{
 ggtheme
 }

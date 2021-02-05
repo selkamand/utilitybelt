@@ -44,6 +44,6 @@ assert_non_empty_string <- function(object, msg=""){
 #' 
 #' @export
 assert_is_whole_number <- function(object, msg=""){
-  assert_that(assertthat::is.number(object), msg=fmterror("assert_is_whole_number: ", "The object [", substitute(object), "] is not a number (a length one numeric vector).", msg))
-  assert_that(assertive::is_whole_number(object), msg=fmterror("assert_is_whole_number: ", "The object [", substitute(object), "] is not a whole number (no decimal place).", msg))
+  assert_that(assertthat::is.number(object), msg=fmterror("assert_is_whole_number: ", "The object [", substitute(object), "] is a '", class(object), "',not a number (a length one numeric vector).", msg))
+  assert_that(object - round(object) == 0, msg=fmterror("assert_is_whole_number: ", "The object [", substitute(object), "] is not a whole number (no decimal place).", msg))
 }

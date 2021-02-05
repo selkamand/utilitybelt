@@ -3,7 +3,9 @@
 
 
 #' Custom Themes
-#'
+#' @param dist_from_plot_xlab distance between x axis title and plot (number)
+#' @param dist_from_plot_ylab distance between y axis title and plot (number)
+#' @param dist_from_plot_ggtitle distance between y axis title and plot (number)
 #' @return ggtheme
 #' @export
 theme_axis_titles <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, dist_from_plot_ggtitle = 10){
@@ -24,6 +26,7 @@ theme_axis_titles <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, 
 #' @param dist_from_plot_xlab distance between x axis title and plot (number)
 #' @param dist_from_plot_ylab distance between y axis title and plot (number)
 #' @param dist_from_plot_ggtitle distance between y axis title and plot (number)
+#' @param subtitle_face Font face ("plain", "italic", "bold", "bold.italic")
 #' @param no_background set all backgrounds to clear? (flag)
 #'
 #' @return ggtheme
@@ -32,7 +35,7 @@ theme_axis_titles <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, 
 #' mtcars %>% 
 #'   ggplot2::ggplot(ggplot2::aes(cyl>6, mpg)) + 
 #'   ggplot2::geom_point() + 
-#'   theme_axis_titles()
+#'   theme_common_adjustments()
 theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_ylab=10, dist_from_plot_ggtitle = 10, no_background=FALSE, subtitle_face="plain"){
   custom_theme <- ggplot2::theme(
     plot.title = ggplot2::element_text(hjust=0.5, size = 18, face = "bold", margin = ggplot2::margin(b = dist_from_plot_ggtitle)),
@@ -61,7 +64,7 @@ theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_yl
 #' @param summaryfunction a function run on the y aesthetic to determine where line is drawn. 
 #' Options include median, mean, max, min, or any other function that summarises a numeric vector into a single number (function)
 #' @param width width of crossbar
-#' @param size,alpha,colour ggplot aesthetics
+#' @param size,colour ggplot aesthetics
 #'
 #' @return ggplot geom
 #' @export
@@ -71,16 +74,11 @@ theme_common_adjustments <- function(dist_from_plot_xlab = 10, dist_from_plot_yl
 #'   ggplot2::ggplot(ggplot2::aes(cyl>6, mpg)) + 
 #'   ggplot2::geom_point() + 
 #'   utilitybelt::geom_crossbar_predefined()
-geom_crossbar_predefined <- function(summaryfunction=median, width=0.4, size=0.3, colour){
+geom_crossbar_predefined <- function(summaryfunction=stats::median, width=0.4, size=0.3, colour){
   assertthat::assert_that(is.function(summaryfunction), msg = "summaryfunction must be a function (e.g. mean)")
   ggplot2::stat_summary(fun = summaryfunction, fun.min = summaryfunction, fun.max = summaryfunction,
                geom = "crossbar", width = width, size=size)
 }
-
-# mtcars %>%
-# ggplot2::ggplot(ggplot2::aes(mpg)) + 
-# ggplot2::geom_bar() + 
-# geom_barplot_counts()
 
 #' geom barplot counts
 #' 
@@ -88,14 +86,14 @@ geom_crossbar_predefined <- function(summaryfunction=median, width=0.4, size=0.3
 #' Works on plots that have a geom_bar() layer.
 #' Works even if you flip axis with coord_flip().
 #' 
-#' @inheritParams ggplot2::geom_text
 #' @param distance_from_bar distance between text and cbar 
 #' @param size size of text (number)
 #' @param alpha transparancy (number)
 #' @param color colour (string)
 #' @param family font family (string)
+#' @param fontface Font face ("plain", "italic", "bold", "bold.italic") (string) 
 #'
-#' @return ggplot geom
+#' @return ggplot geom 
 #' @export
 #'
 #' @examples
@@ -105,10 +103,12 @@ geom_crossbar_predefined <- function(summaryfunction=median, width=0.4, size=0.3
 #' ggplot2::xlab("cylinders") + 
 #' geom_barplot_counts() 
 geom_barplot_counts <- function(distance_from_bar=1.5, size = 4, fontface="bold", alpha = 0.8, color = "black", family="Helvetica"){
+  ..count..=NULL
+  
   ggplot2::geom_text(
     stat='count', ggplot2::aes(label=..count..), 
     nudge_y = distance_from_bar, 
-    size = size, 
+    size = size,
     fontface=fontface, 
     alpha = alpha, 
     color=color,

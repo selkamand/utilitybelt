@@ -20,6 +20,8 @@ theme_common_adjustments(
 \item{dist_from_plot_ggtitle}{distance between y axis title and plot (number)}
 
 \item{no_background}{set all backgrounds to clear? (flag)}
+
+\item{subtitle_face}{Font face ("plain", "italic", "bold", "bold.italic")}
 }
 \value{
 ggtheme
@@ -31,5 +33,5 @@ ggplot theme that fixes a bunch of issues I tend to have with plots
 mtcars \%>\% 
   ggplot2::ggplot(ggplot2::aes(cyl>6, mpg)) + 
   ggplot2::geom_point() + 
-  theme_axis_titles()
+  theme_common_adjustments()
 }

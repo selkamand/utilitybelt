@@ -1,5 +1,5 @@
 # utilitybelt
-R package of assorted utility functions that make life easier, particularly when developing commandline scripts
+R package of assorted utility functions for general use
 
 ## Install
 devtools::install_github("selkamand/utilitybelt")
